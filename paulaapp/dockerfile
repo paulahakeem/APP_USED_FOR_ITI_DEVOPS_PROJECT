@@ -4,13 +4,11 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm install --quiet --no-progress
 
 COPY . .
 
-EXPOSE 3000
-
-RUN npm run build 
+RUN npm run build --quiet --no-progress || exit 1
 
 #deploy stage
 
@@ -20,4 +18,4 @@ COPY --from=build /app/build /usr/share/nginx/html
 
 EXPOSE 80
 
-CMD [ "nginx", "-g", "daemon off;" ]
+CMD ["nginx", "-g", "daemon off;"]
