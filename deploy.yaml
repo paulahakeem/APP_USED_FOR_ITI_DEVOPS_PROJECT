@@ -17,8 +17,8 @@ spec:
     spec:
       containers:
         - name: backend2
-          image: paulahakeem/finalapp:v2
+          image: paulahakeem/finalapp:v3
           ports:
-            - containerPort: 3000
+            - containerPort: 80
               protocol: TCP
 ---
